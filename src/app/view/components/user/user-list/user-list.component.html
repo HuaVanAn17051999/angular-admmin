@@ -1,0 +1,75 @@
+<div class="col-md-12">
+  <!-- general form elements -->
+  <div class="card card-primary">
+    <div class="card-header">
+      <!-- <button [routerLink] = "['/category-cteate']" class="btn btn-warning">Add</button> -->
+   
+      <div class="card-tools d-flex">
+        <div class="d-flex align-items-start justify-content-center">
+          <button type="button" class="btn btn-block btn-info btn-sm "><i class="fas fa-plus"></i> Add item</button>
+        </div>
+        <div>
+          <button type="button" class="btn btn-tool"
+          data-card-widget="card-refresh" data-source="widgets.html"
+          data-source-selector="#card-refresh-content"
+          data-load-on-init="false"><i class="fas fa-sync-alt"></i></button>
+        <button type="button" class="btn btn-tool" data-card-widget="maximize"><i
+            class="fas fa-expand"></i></button>
+        <button type="button" class="btn btn-tool" data-card-widget="collapse"><i
+            class="fas fa-minus"></i></button>
+        <button type="button" class="btn btn-tool" data-card-widget="remove"><i
+            class="fas fa-times"></i></button>
+        </div>
+      
+     
+      </div>
+    </div>
+    <div class="card-body">
+      <table class="table table-bordered table-striped dataTable dtr-inline collapsed">
+        <thead class="w-100">
+          <tr class="w-100">
+           
+            <th scope="col">UserName</th>
+            <th scope="col">FirstName</th>
+            <th scope="col">LastName</th>
+            <th scope="col">Email</th>
+            <th scope="col">Roles</th>
+            <th scope="col">Action</th>
+          </tr>
+        </thead>
+        <tbody >
+          <tr *ngFor="let item of res" >
+            <td>{{item.firstName}}</td>
+            <td>{{item.lastName}}</td>     
+            <td>{{item.userName}}</td>  
+            <td>{{item.email}}</td> 
+            <td>{{item.role}}</td>
+       
+            <!-- <td><a [routerLink]="['/user-edit',item.id]"><i class="fas fa-marker"></i></a></td>
+            <td><a (click)="onDelete(item.id)"><i class="fas fa-trash"></i></a></td> -->
+            <td class="project-actions text-right">
+              <a class="btn btn-primary btn-sm mr-1" href="#">
+                  <i class="fas fa-folder">
+                  </i>
+                  View
+              </a>
+              <a class="btn btn-info btn-sm mr-1" [routerLink]="['/dashboard/user-edit',item.id]">
+                  <i class="fas fa-pencil-alt">
+                  </i>
+                  Edit
+              </a>
+              <a class="btn btn-danger btn-sm text-white" (click)="onDelete(item.id)">
+                  <i class="fas fa-trash">
+                  </i>
+                  Delete
+              </a>
+          </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="card-footer">
+
+    </div>
+  </div>
+</div>

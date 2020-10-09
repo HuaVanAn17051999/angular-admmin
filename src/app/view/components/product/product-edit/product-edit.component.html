@@ -1,0 +1,117 @@
+
+<!-- left column -->
+<div class="col-md-12">
+    <!-- general form elements -->
+    <div class="card card-success">
+        <div class="card-header">
+            <h3 class="card-title">All together</h3>
+
+            <div class="card-tools">
+                <button type="button" class="btn btn-tool"
+                    data-card-widget="card-refresh" data-source="widgets.html"
+                    data-source-selector="#card-refresh-content"
+                    data-load-on-init="false"><i class="fas fa-sync-alt"></i></button>
+                <button type="button" class="btn btn-tool"
+                    data-card-widget="maximize"><i class="fas fa-expand"></i></button>
+                <button type="button" class="btn btn-tool"
+                    data-card-widget="collapse"><i class="fas fa-minus"></i></button>
+                <button type="button" class="btn btn-tool"
+                    data-card-widget="remove"><i class="fas fa-times"></i></button>
+            </div>
+            <!-- /.card-tools -->
+        </div>
+        <form [formGroup]="editForm" role="form" (ngSubmit)="onSubmit()" >
+            <div class="card-body" style="display: block;">
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label>Name</label>
+                                <input type="text" class="form-control"
+                                    placeholder="Enter Name" name="name"
+                                    formControlName="Name">
+                            </div>
+                            <p *ngIf="!editForm.get('Name').valid &&
+                            editForm.get('Name').touched"
+                                class="text-danger">
+                                Name is requied
+                            </p>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label>Price</label>
+                                <input type="text" class="form-control"
+                                    placeholder="Enter Price" name="price"
+                                    formControlName="Price">
+                            </div>
+                            <p *ngIf="!editForm.get('Price').valid &&
+                            editForm.get('Price').touched"
+                                class="text-danger">
+                                Price is requied
+                            </p>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label>OldPrice</label>
+                                <input type="text" class="form-control"
+                                    placeholder="Enter OldPrice" name="OldPrice"
+                                    formControlName="OldPrice">
+                            </div>
+                            <p *ngIf="!editForm.get('OldPrice').valid &&
+                            editForm.get('OldPrice').touched"
+                                class="text-danger">
+                                OldPrice is requied
+                            </p>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label>Quantity</label>
+                                <input type="text" class="form-control"
+                                    placeholder="Enter Quantity" name="Quantity"
+                                    formControlName="Stock">
+                            </div>
+                            <p *ngIf="!editForm.get('Stock').valid &&
+                            editForm.get('Stock').touched"
+                                class="text-danger">
+                                Quantity is requied
+                            </p>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label for="inputDescription">Caption</label>
+                                <textarea id="inputDescription" class="form-control" rows="4" formControlName ="Caption"></textarea>
+                              </div>
+                            <p *ngIf="!editForm.get('Caption').valid &&
+                            editForm.get('Caption').touched"
+                                class="text-danger">
+                                Caption is requied
+                            </p>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label>File Image</label>
+                                <div class="input-group">
+                                    <div class="custom-file">   
+                                        <input type="file" accept='image/*'  class="custom-file-input" (change)="onFileSelect($event)">
+                                        <label class="custom-file-label" for="exampleInputFile">{{imgFileName}}</label>          
+                                    </div>
+                                    <img *ngIf="URLimg; else baseImage" [src]="URLimg" height="100" >
+                                    <ng-template #baseImage>
+                                        <img [src]="baseUrl + imgURL" height="100" *ngIf="imgURL">
+                                    </ng-template>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="card-footer" style="display: block;">
+                <button class="btn btn-primary">Submit</button>
+            </div>
+        </form>
+    </div>
+</div>

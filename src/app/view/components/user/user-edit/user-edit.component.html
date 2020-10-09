@@ -1,0 +1,91 @@
+<div class="col-md-12">
+    <div class="card card-success">
+        <div class="card-header">
+            <h3 class="card-title">
+            title
+            </h3>
+
+            <div class="card-tools">
+                <button type="button" class="btn btn-tool"
+                    data-card-widget="card-refresh" data-source="widgets.html"
+                    data-source-selector="#card-refresh-content"
+                    data-load-on-init="false"><i class="fas fa-sync-alt"></i></button>
+                <button type="button" class="btn btn-tool"
+                    data-card-widget="maximize"><i class="fas fa-expand"></i></button>
+                <button type="button" class="btn btn-tool"
+                    data-card-widget="collapse"><i class="fas fa-minus"></i></button>
+                <button type="button" class="btn btn-tool"
+                    data-card-widget="remove"><i class="fas fa-times"></i></button>
+            </div>
+            <!-- /.card-tools -->
+        </div>
+       
+            <form [formGroup]="form" (ngSubmit)="onSubmit()">
+                <div class="card-body">
+                  <div class="form-group">
+                    <label for="exampleInputEmail1">FirstName</label>
+                    <input type="text" class="form-control" formControlName = "FirstName">
+                  </div>
+                  <p *ngIf="!form.get('FirstName').valid &&
+                  form.get('FirstName').touched"
+                      class="text-danger">
+                      FirstName is requied
+                  </p>
+                  <div class="form-group">
+                    <label for="exampleInputPassword1">LastName</label>
+                    <input type="text" class="form-control" formControlName = "LastName">
+                  </div>
+                  <p *ngIf="!form.get('LastName').valid &&
+                  form.get('LastName').touched"
+                      class="text-danger">
+                      LastName is requied
+                  </p>
+                  
+                  <div class="form-group">
+                    <label for="exampleInputPassword1">UserName</label>
+                    <input type="text" class="form-control" formControlName = "UserName">
+                  </div>
+                  <p *ngIf="!form.get('UserName').valid &&
+                  form.get('UserName').touched"
+                      class="text-danger">
+                      UserName is requied
+                  </p>
+
+                  <div class="form-group">
+                    <label for="exampleInputPassword1">Email</label>
+                    <input type="email" class="form-control" formControlName = "Email">
+                  </div>
+                  <p *ngIf="!form.get('Email').valid &&
+                  form.get('Email').touched"
+                      class="text-danger">
+                      Email is requied
+                  </p>
+
+                 <!-- <div class="form-group">
+                  <label for="exampleInputPassword1">Roles</label>
+                        <div class="form-check" *ngFor="let ticket of role ">
+                          <input class="form-check-input" [value]="ticket.name" type="checkbox"
+                          (change)="onCheck(ticket.id)" formControlName="Role">
+                          <label class="form-check-label">{{ticket.name}}</label>
+                        </div>
+                  </div> -->
+                  <div class="form-group">
+                    <label for="exampleInputPassword1">Roles</label>
+                          <div class="form-check" *ngFor="let ticket of role ; let i=index">
+                            <input class="form-check-input" *ngIf="roles" [value]="ticket.name" type="checkbox"
+                            (change)="onCheckboxChange($event)">
+                            <label class="form-check-label">{{ticket.name}}</label>
+                          </div>
+                    </div>
+                    <div class="checked-error" *ngIf="this.form.controls['Role'].errors?.required">
+                      Checkbox is required, select atleast one value.
+                    </div>
+                </div>
+               
+                <div class="card-footer">
+                  <button type="submit" class="btn btn-primary">Submit</button>
+                </div>
+              </form>
+
+    </div>
+</div>

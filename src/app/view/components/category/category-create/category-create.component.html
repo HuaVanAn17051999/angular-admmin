@@ -1,0 +1,70 @@
+<div class="col-md-12">
+    <div class="card card-success">
+        <div class="card-header">
+            <h3 class="card-title">
+            title
+            </h3>
+
+            <div class="card-tools">
+                <button type="button" class="btn btn-tool"
+                    data-card-widget="card-refresh" data-source="widgets.html"
+                    data-source-selector="#card-refresh-content"
+                    data-load-on-init="false"><i class="fas fa-sync-alt"></i></button>
+                <button type="button" class="btn btn-tool"
+                    data-card-widget="maximize"><i class="fas fa-expand"></i></button>
+                <button type="button" class="btn btn-tool"
+                    data-card-widget="collapse"><i class="fas fa-minus"></i></button>
+                <button type="button" class="btn btn-tool"
+                    data-card-widget="remove"><i class="fas fa-times"></i></button>
+            </div>
+            <!-- /.card-tools -->
+        </div>
+        <form role="form" (ngSubmit)="onSubmit(form)" #form="ngForm"
+>
+            <div class="card-body d-flex">
+                <div class="col-4">
+                    <div class="form-group">
+                        <label>Name</label>
+                        <input type="text" class="form-control"
+                         placeholder="Enter name" name="Name"
+                         ngModel #txtName = "ngModel" ngModel required>
+                    </div>
+                </div>
+                <div class="col-4">
+                    <div class="form-group">
+                        <label for="contactMethod">Parent</label>
+                        <select class="form-control" name="ParentId"
+                            ngModel>
+                            <option value="0" selected>
+                                --------No Parent--------
+                            </option>
+                            <option *ngFor="let item of arr" [value]= "item.id">{{
+                                item.name }}</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="col-4">
+                    <div class="form-check">
+                        <input type="checkbox" class="form-check-input"  name="Status" ngModel
+                            id="exampleCheck1"  >
+                        <label class="form-check-label" for="exampleCheck1">Status</label>
+                    </div>
+                  
+                </div>
+
+
+
+                <!-- <p *ngIf="txtPrice.touched && txtName.errors?.required" class="text-danger">
+                        Price is requied
+                    </p> -->
+            </div>
+            <!-- /.card-body -->
+            <div class="card-footer">
+                <button [disabled]="!form.valid" class="btn
+                    btn-primary">Submit</button>
+            </div>
+        </form>
+    </div>
+
+
+</div>
